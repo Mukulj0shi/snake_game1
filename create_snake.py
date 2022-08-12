@@ -16,14 +16,21 @@ screen_obj.title("Snake Game")
 screen_obj.listen()
 is_game_on = True
 
-
 # Define snake body
 def snake_body():
+    x_cordinate = 0
+    y_cordinate = 10
     turtle_obj.shape("square")
     turtle_obj.color("white")
-    # Creating turtle of 3times more than original length
-    turtle_obj.shapesize(1.0, 3.0, 1)
-    # print(turtle_obj.shapesize())
+    turtle_obj.shapesize(1, 1, 1)
+    # Creating turtle of 3times more than original length. Here we will create 3 turtle objects.
+    for i in range(0, 4):
+        turtle_obj.setx(x_cordinate)
+        turtle_obj.sety(y_cordinate)
+        turtle_obj.shape("square")
+        x_cordinate = x_cordinate + 0
+        y_cordinate = y_cordinate + 2
+        # print(turtle_obj.shapesize())
 
 
 # move snake along the screen
@@ -54,8 +61,10 @@ def move_snake_right():
     turtle_obj.setheading(0)
 
 
-while is_game_on:
-    snake_body()
-    move_snake_fwd()
+#while is_game_on:
+#    snake_body()
+    #move_snake_fwd()
+
+snake_body()
 
 screen_obj.exitonclick()
