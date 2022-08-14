@@ -7,15 +7,18 @@
 """
 
 from turtle import Turtle, Screen
-STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]    #Constant are defined at the top of the program in capital letters and snake case.
+
+STARTING_POSITIONS = [(0, 0), (-20, 0),
+                      (-40, 0)]  # Constant are defined at the top of the program in capital letters and snake case.
 MOVE_DISTANCE = 20
 
-class Snake():
+
+class Snake:
     def __init__(self):
-        self.turt_obj_list = []                         # Here we are defining the attributes related to snake creation.
+        self.turt_obj_list = []  # Here we are defining the attributes related to snake creation.
         self.create_snake()
         self.head = self.turt_obj_list[0]
-
+        self.position = (0.00, 0.00)
 
     # Define snake body
     def create_snake(self):
@@ -27,19 +30,18 @@ class Snake():
             turtle_obj1.penup()
             turtle_obj1.speed(1)
             turtle_obj1.goto(cord)
-            self.turt_obj_list.append(turtle_obj1)      #Calling attributes in methods using self.attribute_name.
+            self.turt_obj_list.append(turtle_obj1)  # Calling attributes in methods using self.attribute_name.
 
     def move_snake(self):
         for items in range((len(self.turt_obj_list) - 1), 0, -1):
             x_cord = self.turt_obj_list[items - 1].xcor()  # Last item moves to second last item position
             y_cord = self.turt_obj_list[items - 2].ycor()
             self.turt_obj_list[items].goto(x_cord, y_cord)
-        self.head.forward(MOVE_DISTANCE)               #Calling attributes in methods using self.attribute_name.
+        self.head.forward(MOVE_DISTANCE)  # Calling attributes in methods using self.attribute_name.
 
     def up(self):
         if self.head.heading() != 270:
             self.head.setheading(90)
-
 
     def down(self):
         if self.head.heading() != 90:
@@ -53,6 +55,6 @@ class Snake():
         if self.head.heading() != 180:
             self.head.setheading(0)
 
-    #create_snake()
-    #move_snake()
-    #screen_obj.exitonclick()
+    # create_snake()
+    # move_snake()
+    # screen_obj.exitonclick()
