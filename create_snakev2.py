@@ -18,19 +18,25 @@ class Snake:
         self.turt_obj_list = []  # Here we are defining the attributes related to snake creation.
         self.create_snake()
         self.head = self.turt_obj_list[0]
+        self.tail = self.turt_obj_list[-1]
         self.position = (0.00, 0.00)
 
     # Define snake body
     def create_snake(self):
         for cord in STARTING_POSITIONS:
-            turtle_obj1 = Turtle()  # This will create 3 turtle objects.
-            # Specifying object outside loop will create only single object.
-            turtle_obj1.shape("square")
-            turtle_obj1.color("white")
-            turtle_obj1.penup()
-            turtle_obj1.speed(1)
-            turtle_obj1.goto(cord)
-            self.turt_obj_list.append(turtle_obj1)  # Calling attributes in methods using self.attribute_name.
+            self.snake_segment(cord)
+
+    def snake_segment(self, position):
+        turtle_obj1 = Turtle()  # This will create 3 turtle objects.
+        # Specifying object outside loop will create only single object.
+        turtle_obj1.shape("square")
+        turtle_obj1.color("white")
+        turtle_obj1.penup()
+        turtle_obj1.goto(position)
+        self.turt_obj_list.append(turtle_obj1)  # Calling attributes in methods using self.attribute_name.
+
+    def addtail(self):
+        self.snake_segment(self.turt_obj_list[-1].position())
 
     def move_snake(self):
         for items in range((len(self.turt_obj_list) - 1), 0, -1):
@@ -54,6 +60,12 @@ class Snake:
     def right(self):
         if self.head.heading() != 180:
             self.head.setheading(0)
+
+    def endgame(self):
+        # print(self.head.position()[0])
+        if self.head.position()[0] <= -400 or self.head.position()[0] >= 400 or self.head.position()[1] <= -400 or \
+                self.head.position()[1] >= 340:
+            return True
 
     # create_snake()
     # move_snake()
