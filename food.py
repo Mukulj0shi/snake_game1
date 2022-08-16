@@ -1,3 +1,6 @@
+"""
+This class creates dot which disappears when snake head touches the dot
+"""
 from turtle import Turtle, Screen
 import random
 
